@@ -96,8 +96,6 @@ public class XMLParser {
 			if (!closeID.equals(this.ID)) throw new MalformedXMLException();
 			
 			accept(tokens, TokenType.CLOSE_BRACKET);
-			
-			return;
 		}
 		
 		
@@ -111,10 +109,13 @@ public class XMLParser {
 		 * @throws MalformedXMLException Thrown if the list is empty or the token type is not equal to the expected.
 		 */
 		private Token accept(List<Token> tokens, TokenType type) throws MalformedXMLException {
-			if (tokens.isEmpty()) throw new MalformedXMLException();
+			if (tokens.isEmpty()) 
+				throw new MalformedXMLException();
 			else {
-				if (tokens.get(0).getType() == type) return accept(tokens);
-				else throw new MalformedXMLException("Expected Token '" + type.toString() + "', but got '" + tokens.get(0).getType().toString() + "'");
+				if (tokens.get(0).getType() == type) 
+					return accept(tokens);
+				else 
+					throw new MalformedXMLException("Expected Token '" + type.toString() + "', but got '" + tokens.get(0).getType().toString() + "'");
 			}
 		}
 		
@@ -125,8 +126,10 @@ public class XMLParser {
 		 * @throws MalformedXMLException Thrown if the list is empty.
 		 */
 		private Token accept(List<Token> tokens) throws MalformedXMLException {
-			if (tokens.isEmpty()) throw new MalformedXMLException();
-			else return tokens.remove(0);
+			if (tokens.isEmpty()) 
+				throw new MalformedXMLException();
+			else 
+				return tokens.remove(0);
 		}
 		
 		/**
@@ -149,8 +152,9 @@ public class XMLParser {
 			else {
 				for (XMLNode n0 : this.children) {
 					XMLNode n1 = n0.getNode(ID);
-					if (n1 != null)return n1;
+					if (n1 != null) return n1;
 				}
+				
 				return null;
 			}
 		}
@@ -171,7 +175,7 @@ public class XMLParser {
 		 * @return The value that was found or null if no node exists with the given id.
 		 */
 		public String getValue(String ID) {
-			if (this.getNode(ID) == null)return null;
+			if (this.getNode(ID) == null) return null;
 			else return this.getNode(ID).value;
 		}
 		

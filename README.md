@@ -13,3 +13,8 @@ you can parse a given file into the XML-Tree data structure. Via the accessor me
 ### Version 1.0.1
 
 - Added ability to parse xml comments
+
+## License and Copyright
+ © Philip Jonas Franz
+ 
+ Licensed under [Apache License 2.0](LICENSE). 
