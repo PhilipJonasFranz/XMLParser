@@ -32,7 +32,11 @@ public class Lexer {
 		List<Token> tokens = new ArrayList();
 		
 		while (!xml.isEmpty()) {
-			if (xml.startsWith("<")) {
+			if (xml.startsWith("<!--")) {
+				while (!xml.isEmpty() && !xml.startsWith(">")) cut(1);
+				cut(1);
+			}
+			else if (xml.startsWith("<")) {
 				tokens.add(new Token(TokenType.OPEN_BRACKET));
 				cut(1);
 			}
