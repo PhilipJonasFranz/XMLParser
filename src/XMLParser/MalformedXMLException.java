@@ -9,6 +9,7 @@ package XMLParser;
 public class MalformedXMLException extends Exception {
 
 			/* --- FIELDS --- */
+	/** Serialization UID */
 	private static final long serialVersionUID = 4954963204648493440L;
 	
 	/** The message of this exception */
@@ -18,6 +19,7 @@ public class MalformedXMLException extends Exception {
 			/* --- CONSTRUCTORS --- */
 	/**
 	 * Create a new instance with a custom message.
+	 * @param message The message of this exception.
 	 */
 	public MalformedXMLException(String message) {
 		this.message = message;

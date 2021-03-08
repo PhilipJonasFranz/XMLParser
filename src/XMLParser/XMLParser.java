@@ -16,6 +16,23 @@ import XMLParser.Token.TokenType;
 public class XMLParser {
 	
 			/* ---< NESTED >--- */
+	/**
+	 * This class represents a single node in the XML-Tree.
+	 * A node may contain a value:<br>
+	 * 
+	 * <code>&lt;foo&gt;value&lt;/foo&gt;</code><br>
+	 * 
+	 * or child-nodes:<br>
+	 * 
+	 * <code>&lt;foo&gt;</code><br>
+	 * <code>&lt;bar&gt;value&lt;/bar&gt;</code><br>
+	 * <code>&lt;/foo&gt;</code><br>
+	 * 
+	 * A node will always contain an id, in the example: 'foo'.
+	 * 
+	 * @author jonas.franz
+	 *
+	 */
 	public static class XMLNode {
 		
 				/* ---< FIELDS >--- */
@@ -114,6 +131,8 @@ public class XMLParser {
 		
 		/**
 		 * Returns the node with given ID.
+		 * @param ID The ID of the searched node.
+		 * @return Returns the first match when the xml-tree is traversed inorder.
 		 */
 		public XMLNode getNode(String ID) {
 			return this.getNodeRec(ID);
@@ -138,6 +157,7 @@ public class XMLParser {
 		
 		/**
 		 * Returns the value of this node. May be null.
+		 * @return The value of this node.
 		 */
 		public String getValue() {
 			return this.value;
@@ -147,6 +167,8 @@ public class XMLParser {
 		 * Returns the value of the node with given ID. If this node has
 		 * the given ID, the value of this node is returned. Otherwise, the
 		 * subtree of this node is searched for the given ID.
+		 * @param ID The ID of the searched node.
+		 * @return The value that was found or null if no node exists with the given id.
 		 */
 		public String getValue(String ID) {
 			if (this.getNode(ID) == null)return null;
@@ -155,13 +177,15 @@ public class XMLParser {
 		
 		/**
 		 * Returns the ID of this node.
+		 * @return Returns the id of this node as string.
 		 */
 		public String getID() {
 			return this.ID;
 		}
 		
-		/*
+		/**
 		 * Returns the child nodes of this node as list.
+		 * @return Returns the children of this node as list.
 		 */
 		public List<XMLNode> getChildren() {
 			return this.children;

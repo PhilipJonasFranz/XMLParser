@@ -15,18 +15,30 @@ public class Token {
 	 */
 	public enum TokenType {
 		
+		/** Describes the character '&lt;'. */
 		OPEN_BRACKET("<"),
+		/** Describes the character '&gt;'. */
 		CLOSE_BRACKET(">"),
+		/** Describes the character '/'. */
 		SLASH("/"),
+		/** Describes a string value, for example a value or id. */
 		STRING("");
 		
 		/** Default spelling of this token type */
 		private final String spelling;
 		
+		/**
+		 * Define Token with custom spelling.
+		 * @param spelling The spelling of this token.
+		 */
 		private TokenType(String spelling) {
 			this.spelling = spelling;
 		}
 		
+		/**
+		 * Returns the spelling of this token as string.
+		 * @return The spelling of the token.
+		 */
 		public String getSpelling() {
 			return this.spelling;
 		}
@@ -48,6 +60,8 @@ public class Token {
 			/* --- CONSTRUCTORS --- */
 	/**
 	 * Create a new token with a type and custom spelling.
+	 * @param type The type of the new token.
+	 * @param spelling The custom spelling of this token.
 	 */
 	public Token(TokenType type, String spelling) {
 		this.type = type;
@@ -57,6 +71,7 @@ public class Token {
 	/**
 	 * Create a new token with a type and the default spelling
 	 * of the token type.
+	 * @param type The type of the new token.
 	 */
 	public Token(TokenType type) {
 		this.type = type;
@@ -67,6 +82,7 @@ public class Token {
 			/* --- METHODS --- */
 	/**
 	 * Returns the type of this token.
+	 * @return The type of this token.
 	 */
 	public TokenType getType() {
 		return this.type;
@@ -74,6 +90,7 @@ public class Token {
 	
 	/**
 	 * Returns the spelling of this token.
+	 * @return Returns the spelling of this token.
 	 */
 	public String getSpelling() {
 		return this.spelling;

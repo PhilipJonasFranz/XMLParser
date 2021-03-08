@@ -5,14 +5,25 @@ import java.util.List;
 
 import XMLParser.Token.TokenType;
 
+/**
+ * The lexer is responsible for converting the passed xml in string format
+ * into a stream of Tokens. The tokens will contain their spelling, as well
+ * as a token type that denote their type.
+ * 
+ * @author jonas.franz
+ *
+ */
 public class Lexer {
 	
+	/**
+	 * Internal buffer for passed xml.
+	 */
 	private String xml = null;
 	
 	/**
 	 * Parses a list of tokens from the given string that 
 	 * represents a flattened XML-File.
-	 * @param xml The contents of the xml file, flattened to one string.
+	 * @param xml0 The contents of the xml file, flattened to one string.
 	 * @return A list of tokens representing the xml file.
 	 */
 	public List<Token> xmlToTokenStream(String xml0) {
@@ -47,7 +58,10 @@ public class Lexer {
 		return tokens;
 	}
 	
-	/** Cuts of the first n characters of the currently parsed string. */
+	/** 
+	 * Cuts of the first n characters of the currently parsed string. 
+	 * @param n Cuts of the first n characters of {@link #xml}.
+	 */
 	public void cut(int n) {
 		xml = xml.substring(n);
 	}
