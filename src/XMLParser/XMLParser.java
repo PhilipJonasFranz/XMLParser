@@ -1,6 +1,7 @@
 package XMLParser;
 
 import java.io.File;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -193,6 +194,40 @@ public class XMLParser {
 		 */
 		public List<XMLNode> getChildren() {
 			return this.children;
+		}
+		
+		/**
+		 * Prints out this yml-node and all of its children.
+		 * @param ps The printstream the nodes should be printed to
+		 */
+		public void print(PrintStream ps) {
+			this.printRec(ps, 0);
+		}
+		
+		/**
+		 * Prints out this node recursiveley.
+		 * @param ps The printstream the nodes should be printed to
+		 * @param d The current printing depth.
+		 */
+		private void printRec(PrintStream ps, int depth) {
+			String spacing = "";
+			for (int i = 0; i < depth; i++)
+				spacing += " ";
+			
+			ps.print(spacing);
+			
+			ps.print("<" + this.ID + ">");
+			
+			if (this.value != null)
+				ps.println(this.value + "</" + this.ID + ">");
+			else {
+				ps.println();
+				
+				for (XMLNode node : this.children)
+					node.printRec(ps, depth + 4);
+				
+				ps.println(spacing + "</" + this.ID + ">");
+			}
 		}
 		
 	}
